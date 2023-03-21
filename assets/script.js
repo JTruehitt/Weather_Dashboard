@@ -59,8 +59,8 @@ function displayCurrentWeather(data) {
   //   $(".currentTime").text(dayjs.unix(data.dt).format("h:mm a"));
   $(".currentTemp").text(Math.round(data.list[0].main.temp) + "°F");
   $(".currentFeel").text(Math.round(data.list[0].main.feels_like) + "°F");
-  $(".currentHigh").text(Math.round(data.list[0].main.temp_max) + "°F");
-  $(".currentLow").text(Math.round(data.list[0].main.temp_min) + "°F");
+  // $(".currentHigh").text(Math.round(data.list[0].main.temp_max) + "°F");
+  // $(".currentLow").text(Math.round(data.list[0].main.temp_min) + "°F");
   $(".currentHumidity").text(Math.round(data.list[0].main.humidity) + "%");
   $(".currentWind").text(Math.round(data.list[0].wind.speed) + "MPH");
   $(".current-card-title").text(data.list[0].weather[0].main);

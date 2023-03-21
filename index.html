@@ -26,27 +26,27 @@
       </div>
 
       <div class="locationAndTime px-3">
-          <p class="locationDisplay mb-0">
-            Location: <span class="currentLocation"></span>
-          </p>
-          <!-- <p class="timeDisplay">Current Time: <span class="currentTime"></span></p> -->
+        <p class="locationDisplay mb-0">
+          Location: <span class="currentLocation"></span>
+        </p>
+        <!-- <p class="timeDisplay">Current Time: <span class="currentTime"></span></p> -->
       </div>
 
       <div class="displayWeatherContainer split">
         <div class="currentWeatherContainer p-2">
-          <h2 class="my-3">Current Conditions</h2>
+          <h2 class="my-3 text-center">Current Conditions</h2>
 
           <!-- Current weather card -->
-          <div class="container">
-            <div class="center">
+          <div class="container center">
+            <div class="">
               <div class="card stack">
                 <img src="" class="currentIMG" alt="..." />
                 <div class="card-body mt-0">
                   <h5 class="current-card-title">Card title</h5>
                   <p>Current Temp: <span class="currentTemp"></span></p>
                   <p>Feels Like: <span class="currentFeel"></span></p>
-                  <p>High: <span class="currentHigh"></span></p>
-                  <p>Low: <span class="currentLow"></span></p>
+                  <!-- <p>High: <span class="currentHigh"></span></p>
+                  <p>Low: <span class="currentLow"></span></p> -->
                   <p>Humidity: <span class="currentHumidity"></span></p>
                   <p>Wind Speed: <span class="currentWind"></span></p>
                 </div>
@@ -57,7 +57,7 @@
         </div>
 
         <div class="forecastContainer p-2">
-          <h2 class="my-3">Upcoming Conditions</h2>
+          <h2 class="my-3 text-center">Upcoming Conditions</h2>
           <div class="container">
             <div class="switcher">
               <div class="card stack">
@@ -100,7 +100,6 @@
         </div>
       </div>
     </main>
-
 
     <!-- dayjs -->
     <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
