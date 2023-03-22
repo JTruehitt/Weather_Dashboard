@@ -45,6 +45,7 @@ function fetchWeather(city, state) {
         alert(
           "There was a problem processing your request. Please check the spelling of your city name and try again."
         );
+        location.reload();
         return;
       } else {
         return res.json();
