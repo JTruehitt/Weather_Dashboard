@@ -7,20 +7,23 @@ let state;
 let country;
 let units = "imperial";
 
+let searchHistoryArr = [];
+
 // declaring query url to be able to manipulate it within functions
 let queryURL;
 
 // event listener on the placeholder fetch button to query the api
 $(".getBtn").click(function () {
-  fetchWeather();
+  city = $(".cityInput").val();
+  fetchWeather(city);
+  addToSearchHistory(city);
 });
 
 // pulls the city that the user input, then constructs the query url
 // uses fetch to sent the api request. utilizes an if statement to confirm the request was returned successfully.
 // if a successful response is receieved, it it parsed out by json into useable data
 // function then feeds the data into the displaycurrentweather and display5day functions
-function fetchWeather() {
-  city = $(".cityInput").val();
+function fetchWeather(city) {
   queryURL =
     "https://api.openweathermap.org/data/2.5/forecast?q=" +
     city +
@@ -29,11 +32,16 @@ function fetchWeather() {
     "&units=" +
     units;
 
+  $(".cityInput").val("");
+
   fetch(queryURL)
     .then(function (res) {
       if (!res.ok) {
         console.log(res.statusText);
-        return; //! put some kind of message here
+        alert(
+          "There was a problem processing your request. Please check the spelling of your city name and try again."
+        );
+        return;
       } else {
         return res.json();
       }
@@ -53,7 +61,6 @@ function displayCurrentWeather(data) {
   let icon = data.list[0].weather[0].icon;
   let imgSRC = "https://openweathermap.org/img/wn/" + icon + "@4x.png";
   $(".currentIMG").attr("src", imgSRC);
-  console.log(imgSRC);
 
   $(".currentLocation").text(data.city.name);
   $(".currentDate").text(dayjs(data.list[0].dt_txt).format("ddd, MMM D"));
@@ -66,9 +73,9 @@ function displayCurrentWeather(data) {
 
 // this works and pulls the next 5 days
 function display5Day(data) {
-  for (let i = 7; i <= 39; i += 8) {
-    console.log(data.list[i].dt_txt);
+  $(".forecastDisplay").empty();
 
+  for (let i = 7; i <= 39; i += 8) {
     let cardHolder = $("<div>");
     let cardDesc = $("<div>");
     let forecastDate = $("<p>");
@@ -89,9 +96,8 @@ function display5Day(data) {
     humidity.text("Humidity: " + data.list[i].main.humidity + "%");
     wind.text("Wind Speed: " + Math.round(data.list[i].main.temp) + "MPH");
 
-    cardHolder.addClass("cluster pt-3");
+    cardHolder.addClass("cluster pt-3 shadow rounded custom-border");
     cardTitle.addClass("text-center");
-    cardHolder.css("border", "2px solid black");
 
     cardDesc.append(forecastDate);
     cardDesc.append(IMG);
@@ -105,3 +111,62 @@ function display5Day(data) {
     $(".forecastDisplay").append(cardHolder);
   }
 }
+
+// Setting up search history array
+function addToSearchHistory(city) {
+  searchHistoryArr = JSON.parse(localStorage.getItem("searchHistory"));
+  if (searchHistoryArr === null || searchHistoryArr === undefined) {
+    searchHistoryArr = [];
+  }
+
+  if (!searchHistoryArr.includes(city.toUpperCase())) {
+    searchHistoryArr.unshift(city.toUpperCase());
+    console.log(searchHistoryArr);
+    localStorage.setItem("searchHistory", JSON.stringify(searchHistoryArr));
+    renderSearchHistory();
+  } else {
+    return;
+  }
+}
+
+function renderSearchHistory() {
+  $(".searchHistoryContainer").empty();
+
+  searchHistoryArr = JSON.parse(localStorage.getItem("searchHistory"));
+  console.log(searchHistoryArr);
+  if (searchHistoryArr === null || searchHistoryArr === undefined) {
+    return;
+  }
+
+  if (searchHistoryArr.length < 5) {
+    for (let i = 0; i < searchHistoryArr.length; i++) {
+      let recentSearch = $("<button>");
+      recentSearch.text(searchHistoryArr[i]);
+      recentSearch.addClass("btn btn-secondary btn-sm");
+      $(".searchHistoryContainer").append(recentSearch);
+    }
+  } else {
+    for (let i = 0; i < 5; i++) {
+      let recentSearch = $("<button>");
+      recentSearch.text(searchHistoryArr[i]);
+      recentSearch.addClass("btn btn-secondary btn-sm");
+      $(".searchHistoryContainer").append(recentSearch);
+    }
+  }
+}
+
+$(".searchHistoryContainer").click(function (e) {
+  city = $(e.target).text();
+  fetchWeather(city);
+});
+
+$(".clearHistoryBtn").click(function () {
+  localStorage.clear();
+  location.reload();
+});
+
+// renders any search history on load
+renderSearchHistory();
+
+// calls fetchWeather to display results for tampa on load
+fetchWeather("tampa");
