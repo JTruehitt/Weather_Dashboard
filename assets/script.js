@@ -15,24 +15,28 @@ let queryURL;
 // event listener on the placeholder fetch button to query the api
 $(".getBtn").click(function () {
   city = $(".cityInput").val();
-  fetchWeather(city);
-  addToSearchHistory(city);
+  state = $(".stateInput").val();
+  fetchWeather(city, state);
+  addToSearchHistory(city, state);
 });
 
 // pulls the city that the user input, then constructs the query url
 // uses fetch to sent the api request. utilizes an if statement to confirm the request was returned successfully.
 // if a successful response is receieved, it it parsed out by json into useable data
 // function then feeds the data into the displaycurrentweather and display5day functions
-function fetchWeather(city) {
+function fetchWeather(city, state) {
   queryURL =
     "https://api.openweathermap.org/data/2.5/forecast?q=" +
     city +
+    "," +
+    state +
     "&appid=" +
     APIkey +
     "&units=" +
     units;
 
   $(".cityInput").val("");
+  $(".stateInput").val("Select State...");
 
   fetch(queryURL)
     .then(function (res) {
@@ -52,6 +56,9 @@ function fetchWeather(city) {
       display5Day(data);
     })
     .catch(console.error);
+
+  state = state.split("-")[1];
+  $(".currentState").text(state.toUpperCase());
 }
 
 // this function renders the fetched weather data to the page
@@ -62,7 +69,7 @@ function displayCurrentWeather(data) {
   let imgSRC = "https://openweathermap.org/img/wn/" + icon + "@4x.png";
   $(".currentIMG").attr("src", imgSRC);
 
-  $(".currentLocation").text(data.city.name);
+  $(".currentCity").text(data.city.name);
   $(".currentDate").text(dayjs(data.list[0].dt_txt).format("ddd, MMM D"));
   $(".currentTemp").text(Math.round(data.list[0].main.temp) + "°F");
   $(".currentFeel").text(Math.round(data.list[0].main.feels_like) + "°F");
@@ -113,14 +120,18 @@ function display5Day(data) {
 }
 
 // Setting up search history array
-function addToSearchHistory(city) {
+function addToSearchHistory(city, state) {
+  state = state.split("-")[1];
+  // $(".currentState").text(state);
   searchHistoryArr = JSON.parse(localStorage.getItem("searchHistory"));
   if (searchHistoryArr === null || searchHistoryArr === undefined) {
     searchHistoryArr = [];
   }
 
-  if (!searchHistoryArr.includes(city.toUpperCase())) {
-    searchHistoryArr.unshift(city.toUpperCase());
+  if (
+    !searchHistoryArr.includes(city.toUpperCase() + ", " + state.toUpperCase())
+  ) {
+    searchHistoryArr.unshift(city.toUpperCase() + ", " + state.toUpperCase());
     console.log(searchHistoryArr);
     localStorage.setItem("searchHistory", JSON.stringify(searchHistoryArr));
     renderSearchHistory();
@@ -169,4 +180,4 @@ $(".clearHistoryBtn").click(function () {
 renderSearchHistory();
 
 // calls fetchWeather to display results for tampa on load
-fetchWeather("tampa");
+fetchWeather("tampa", "us-fl");
