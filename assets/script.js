@@ -51,25 +51,57 @@ function fetchWeather() {
 // it then simply pulls data from the response object, rounds them to pretty whole numbers, and displays to the page
 function displayCurrentWeather(data) {
   let icon = data.list[0].weather[0].icon;
-  let imgSRC = "https://openweathermap.org/img/wn/" + icon + "@2x.png";
+  let imgSRC = "https://openweathermap.org/img/wn/" + icon + "@4x.png";
   $(".currentIMG").attr("src", imgSRC);
   console.log(imgSRC);
 
   $(".currentLocation").text(data.city.name);
-  //   $(".currentTime").text(dayjs.unix(data.dt).format("h:mm a"));
+  $(".currentDate").text(dayjs(data.list[0].dt_txt).format("ddd, MMM D"));
   $(".currentTemp").text(Math.round(data.list[0].main.temp) + "°F");
   $(".currentFeel").text(Math.round(data.list[0].main.feels_like) + "°F");
-  // $(".currentHigh").text(Math.round(data.list[0].main.temp_max) + "°F");
-  // $(".currentLow").text(Math.round(data.list[0].main.temp_min) + "°F");
   $(".currentHumidity").text(Math.round(data.list[0].main.humidity) + "%");
   $(".currentWind").text(Math.round(data.list[0].wind.speed) + "MPH");
   $(".current-card-title").text(data.list[0].weather[0].main);
-  // $(".current-card-title").text(data.weather[0].main);
 }
 
 // this works and pulls the next 5 days
 function display5Day(data) {
   for (let i = 7; i <= 39; i += 8) {
     console.log(data.list[i].dt_txt);
+
+    let cardHolder = $("<div>");
+    let cardDesc = $("<div>");
+    let forecastDate = $("<p>");
+    let IMG = $("<img>");
+    let cardBody = $("<div>");
+    let cardTitle = $("<h5>");
+    let temp = $("<p>");
+    let humidity = $("<p>");
+    let wind = $("<p>");
+
+    forecastDate.text(dayjs(data.list[i].dt_txt).format("ddd, MMM D"));
+    let forecastIMG = data.list[i].weather[0].icon;
+    let forecastIMGSRC =
+      "https://openweathermap.org/img/wn/" + forecastIMG + "@2x.png";
+    IMG.attr("src", forecastIMGSRC);
+    cardTitle.text(data.list[i].weather[0].main);
+    temp.text("Temp: " + Math.round(data.list[i].main.temp) + "°F");
+    humidity.text("Humidity: " + data.list[i].main.humidity + "%");
+    wind.text("Wind Speed: " + Math.round(data.list[i].main.temp) + "MPH");
+
+    cardHolder.addClass("cluster pt-3");
+    cardTitle.addClass("text-center");
+    cardHolder.css("border", "2px solid black");
+
+    cardDesc.append(forecastDate);
+    cardDesc.append(IMG);
+    cardBody.append(cardTitle);
+    cardBody.append(temp);
+    cardBody.append(humidity);
+    cardBody.append(wind);
+    cardHolder.append(cardDesc);
+    cardHolder.append(cardBody);
+
+    $(".forecastDisplay").append(cardHolder);
   }
 }
