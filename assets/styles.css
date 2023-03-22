@@ -51,7 +51,6 @@ p {
 
 .split > :first-child {
   flex-grow: 1;
-  /* max-inline-size: 20rem; */
   margin-inline: auto;
 }
 
@@ -116,10 +115,23 @@ p {
 img {
   max-width: 100%;
   display: block;
-  /* max-inline-size: 30rem; */
 }
 
 .currentDesc {
-  border: 2px solid var(--color-highlight);
+  flex-direction: column;
+  gap: 0;
 }
 
+.currentData {
+  color: var(--color-highlight);
+  font-size: var(--step-2);
+}
+
+.current-card-title {
+  color: var(--color-highlight);
+  font-size: var(--step-3);
+}
+
+.custom-border {
+  border: 3px solid var(--color-highlight);
+}

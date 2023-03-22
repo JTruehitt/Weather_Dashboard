@@ -21,14 +21,17 @@
 
     <main class="mainDisplay">
       <div class="inputPlaceholder p-3">
-        <input type="text" class="cityInput" />
-        <button class="getBtn">Fetch</button>
+        <input type="text" class="cityInput" placeholder="Enter city name..." />
+        <button class="btn btn-success getBtn">Fetch</button>
       </div>
 
       <div class="locationAndTime px-3">
         <p class="locationDisplay mb-0">
-          Showing conditions for: <span class="currentLocation"></span>
+          Showing conditions for: <span class="currentLocation fw-bold"></span>
         </p>
+        <p class="searchHistoryLabel fw-bold">Search History:</p>
+        <div class="searchHistoryContainer cluster"></div>
+        <button class="btn btn-danger clearHistoryBtn">Clear History</button>
       </div>
 
       <div class="displayWeatherContainer">
@@ -36,30 +39,30 @@
           <h2 class="my-3 text-center">Current Conditions</h2>
 
           <!-- Current weather card -->
-          <div class="container">
+          <div class="container custom-border rounded shadow p-3">
             <p class="dateDisplay text-center">
               Today is <span class="currentDate"></span>
             </p>
-            <div class="center cluster currentDesc">
+            <div class="center cluster currentDesc mb-1">
               <img src="" class="currentIMG" alt="..." />
               <h5 class="current-card-title"></h5>
             </div>
             <div class="container">
               <div class="row justify-content-center text-center mb-0">
                 <div class="col-sm-3 col-6">
-                  <p class="currentTemp"></p>
+                  <p class="currentTemp currentData"></p>
                   <p class="mb-2">Current Temp</p>
                 </div>
                 <div class="col-sm-3 col-6">
-                  <p class="currentFeel"></p>
+                  <p class="currentFeel currentData"></p>
                   <p class="mb-2">Feels Like</p>
                 </div>
                 <div class="col-sm-3 col-6">
-                  <p class="currentHumidity"></p>
+                  <p class="currentHumidity currentData"></p>
                   <p>Humidity</p>
                 </div>
                 <div class="col-sm-3 col-6">
-                  <p class="currentWind"></p>
+                  <p class="currentWind currentData"></p>
                   <p>Wind Speed</p>
                 </div>
               </div>
