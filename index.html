@@ -27,76 +27,49 @@
 
       <div class="locationAndTime px-3">
         <p class="locationDisplay mb-0">
-          Location: <span class="currentLocation"></span>
+          Showing conditions for: <span class="currentLocation"></span>
         </p>
-        <!-- <p class="timeDisplay">Current Time: <span class="currentTime"></span></p> -->
       </div>
 
-      <div class="displayWeatherContainer split">
+      <div class="displayWeatherContainer">
         <div class="currentWeatherContainer p-2">
           <h2 class="my-3 text-center">Current Conditions</h2>
 
           <!-- Current weather card -->
-          <div class="container center">
-            <div class="">
-              <div class="card stack">
-                <img src="" class="currentIMG" alt="..." />
-                <div class="card-body mt-0">
-                  <h5 class="current-card-title">Card title</h5>
-                  <p>Current Temp: <span class="currentTemp"></span></p>
-                  <p>Feels Like: <span class="currentFeel"></span></p>
-                  <!-- <p>High: <span class="currentHigh"></span></p>
-                  <p>Low: <span class="currentLow"></span></p> -->
-                  <p>Humidity: <span class="currentHumidity"></span></p>
-                  <p>Wind Speed: <span class="currentWind"></span></p>
+          <div class="container">
+            <p class="dateDisplay text-center">
+              Today is <span class="currentDate"></span>
+            </p>
+            <div class="center cluster currentDesc">
+              <img src="" class="currentIMG" alt="..." />
+              <h5 class="current-card-title"></h5>
+            </div>
+            <div class="container">
+              <div class="row justify-content-center text-center mb-0">
+                <div class="col-sm-3 col-6">
+                  <p class="currentTemp"></p>
+                  <p class="mb-2">Current Temp</p>
                 </div>
-                <!-- <div class="currentDisplay"></div> -->
+                <div class="col-sm-3 col-6">
+                  <p class="currentFeel"></p>
+                  <p class="mb-2">Feels Like</p>
+                </div>
+                <div class="col-sm-3 col-6">
+                  <p class="currentHumidity"></p>
+                  <p>Humidity</p>
+                </div>
+                <div class="col-sm-3 col-6">
+                  <p class="currentWind"></p>
+                  <p>Wind Speed</p>
+                </div>
               </div>
             </div>
           </div>
         </div>
 
-        <div class="forecastContainer p-2">
+        <div class="forecastContainer container p-2">
           <h2 class="my-3 text-center">Upcoming Conditions</h2>
-          <div class="container">
-            <div class="switcher">
-              <div class="card stack">
-                <img src="..." class="card-img-top" alt="..." />
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">
-                    Some quick example text to build on the card title and make
-                    up the bulk of the card's content.
-                  </p>
-                </div>
-                <div class="forecastdisplay"></div>
-              </div>
-
-              <div class="card stack">
-                <img src="..." class="card-img-top" alt="..." />
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">
-                    Some quick example text to build on the card title and make
-                    up the bulk of the card's content.
-                  </p>
-                </div>
-                <div class="forecastdisplay"></div>
-              </div>
-
-              <div class="card stack">
-                <img src="..." class="card-img-top" alt="..." />
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">
-                    Some quick example text to build on the card title and make
-                    up the bulk of the card's content.
-                  </p>
-                </div>
-                <div class="forecastdisplay"></div>
-              </div>
-            </div>
-          </div>
+          <div class="forecastDisplay switcher"></div>
         </div>
       </div>
     </main>
