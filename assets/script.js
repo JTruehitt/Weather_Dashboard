@@ -18,7 +18,7 @@ let queryURL;
 // pushes the city and state to the fetch weather and search history functions
 $(".getBtn").click(function (e) {
   e.preventDefault();
-  city = $(".cityInput").val();
+  city = $(".cityInput").val().trim();
   state = $(".stateInput").val();
 
   if (city === "" || state === "Select State...") {
