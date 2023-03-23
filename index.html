@@ -14,93 +14,100 @@
     <link rel="stylesheet" href="./assets/styles.css" />
     <title>Weather Dashboard</title>
   </head>
-  <body>
-    <header>
+  <body class="center">
+    <header class="py-3">
       <h1 class="mainHeader text-center my-3">Weather Dashboard</h1>
     </header>
 
-    <main class="mainDisplay">
-      <div class="inputPlaceholder p-3">
-        <input
-          type="text"
-          class="cityInput form-control"
-          placeholder="Enter city name..."
-        />
-        <select class="form-select stateInput">
-          <option selected>Select State...</option>
-          <option value="US-AL">Alabama</option>
-          <option value="US-AK">Alaska</option>
-          <option value="US-AZ">Arizona</option>
-          <option value="US-AR">Arkansas</option>
-          <option value="US-CA">California</option>
-          <option value="US-CO">Colorado</option>
-          <option value="US-CT">Connecticut</option>
-          <option value="US-DE">Delaware</option>
-          <option value="US-DC">District Of Columbia</option>
-          <option value="US-FL">Florida</option>
-          <option value="US-GA">Georgia</option>
-          <option value="US-HI">Hawaii</option>
-          <option value="US-ID">Idaho</option>
-          <option value="US-IL">Illinois</option>
-          <option value="US-IN">Indiana</option>
-          <option value="US-IA">Iowa</option>
-          <option value="US-KS">Kansas</option>
-          <option value="US-KY">Kentucky</option>
-          <option value="US-LA">Louisiana</option>
-          <option value="US-ME">Maine</option>
-          <option value="US-MD">Maryland</option>
-          <option value="US-MA">Massachusetts</option>
-          <option value="US-MI">Michigan</option>
-          <option value="US-MN">Minnesota</option>
-          <option value="US-MS">Mississippi</option>
-          <option value="US-MO">Missouri</option>
-          <option value="US-MT">Montana</option>
-          <option value="US-NE">Nebraska</option>
-          <option value="US-NV">Nevada</option>
-          <option value="US-NH">New Hampshire</option>
-          <option value="US-NJ">New Jersey</option>
-          <option value="US-NM">New Mexico</option>
-          <option value="US-NY">New York</option>
-          <option value="US-NC">North Carolina</option>
-          <option value="US-ND">North Dakota</option>
-          <option value="US-OH">Ohio</option>
-          <option value="US-OK">Oklahoma</option>
-          <option value="US-OR">Oregon</option>
-          <option value="US-PA">Pennsylvania</option>
-          <option value="US-RI">Rhode Island</option>
-          <option value="US-SC">South Carolina</option>
-          <option value="US-SD">South Dakota</option>
-          <option value="US-TN">Tennessee</option>
-          <option value="US-TX">Texas</option>
-          <option value="US-UT">Utah</option>
-          <option value="US-VT">Vermont</option>
-          <option value="US-VA">Virginia</option>
-          <option value="US-WA">Washington</option>
-          <option value="US-WV">West Virginia</option>
-          <option value="US-WI">Wisconsin</option>
-          <option value="US-WY">Wyoming</option>
-        </select>
-        <button class="btn btn-success getBtn">Fetch</button>
-      </div>
+    <main class="mainDisplay split center">
+      <form >
+        <div class="inputPlaceholder p-3 stack">
+          <p class="fw-bold fs-3">Search for a City...</p>
+          <input
+            type="text"
+            class="cityInput form-control"
+            placeholder="Enter city name..."
+            
+          />
+          <select class="form-select stateInput" required>
+            <option selected>Select State...</option>
+            <option value="US-AL">Alabama</option>
+            <option value="US-AK">Alaska</option>
+            <option value="US-AZ">Arizona</option>
+            <option value="US-AR">Arkansas</option>
+            <option value="US-CA">California</option>
+            <option value="US-CO">Colorado</option>
+            <option value="US-CT">Connecticut</option>
+            <option value="US-DE">Delaware</option>
+            <option value="US-DC">District Of Columbia</option>
+            <option value="US-FL">Florida</option>
+            <option value="US-GA">Georgia</option>
+            <option value="US-HI">Hawaii</option>
+            <option value="US-ID">Idaho</option>
+            <option value="US-IL">Illinois</option>
+            <option value="US-IN">Indiana</option>
+            <option value="US-IA">Iowa</option>
+            <option value="US-KS">Kansas</option>
+            <option value="US-KY">Kentucky</option>
+            <option value="US-LA">Louisiana</option>
+            <option value="US-ME">Maine</option>
+            <option value="US-MD">Maryland</option>
+            <option value="US-MA">Massachusetts</option>
+            <option value="US-MI">Michigan</option>
+            <option value="US-MN">Minnesota</option>
+            <option value="US-MS">Mississippi</option>
+            <option value="US-MO">Missouri</option>
+            <option value="US-MT">Montana</option>
+            <option value="US-NE">Nebraska</option>
+            <option value="US-NV">Nevada</option>
+            <option value="US-NH">New Hampshire</option>
+            <option value="US-NJ">New Jersey</option>
+            <option value="US-NM">New Mexico</option>
+            <option value="US-NY">New York</option>
+            <option value="US-NC">North Carolina</option>
+            <option value="US-ND">North Dakota</option>
+            <option value="US-OH">Ohio</option>
+            <option value="US-OK">Oklahoma</option>
+            <option value="US-OR">Oregon</option>
+            <option value="US-PA">Pennsylvania</option>
+            <option value="US-RI">Rhode Island</option>
+            <option value="US-SC">South Carolina</option>
+            <option value="US-SD">South Dakota</option>
+            <option value="US-TN">Tennessee</option>
+            <option value="US-TX">Texas</option>
+            <option value="US-UT">Utah</option>
+            <option value="US-VT">Vermont</option>
+            <option value="US-VA">Virginia</option>
+            <option value="US-WA">Washington</option>
+            <option value="US-WV">West Virginia</option>
+            <option value="US-WI">Wisconsin</option>
+            <option value="US-WY">Wyoming</option>
+          </select>
+          <button class="btn btn-success getBtn">Get Weather</button>
+      </form>
+      
 
-      <div class="locationAndTime px-3">
-        <p class="locationDisplay mb-0">
-          Showing conditions for: <span class="currentCity fw-bold"></span>,
-          <span class="currentState fw-bold"></span>
-        </p>
-        <p class="searchHistoryLabel fw-bold">Search History:</p>
-        <div class="searchHistoryContainer cluster"></div>
-        <button class="btn btn-danger clearHistoryBtn">Clear History</button>
+      <div class="searchHistory px-3">
+        <p class="searchHistoryLabel fw-bold mb-2">Search History:</p>
+        <div class="searchHistoryContainer stack"></div>
+        <button class="btn btn-danger clearHistoryBtn mt-3 w-100">Clear History</button>
       </div>
+    </div>
 
       <div class="displayWeatherContainer">
         <div class="currentWeatherContainer p-2">
-          <h2 class="my-3 text-center">Current Conditions</h2>
-
+          <p class="locationDisplay text-center mt-2 mb-0">
+            Showing conditions for:</p> 
+            <h2 class="text-center mt-3"><span class="currentCity fw-bold"></span>,
+            <span class="currentState fw-bold"></span></h2>
+            <div class="d-grid justify-content-center"><button class="btn btn-success makePrimaryBtn btn-sm">Make Primary Location</button></div>
+          <h3 class="my-3 text-center">Current Conditions</h2>
+          
+          
           <!-- Current weather card -->
-          <div class="container custom-border rounded shadow p-3">
-            <p class="dateDisplay text-center">
-              Today is <span class="currentDate"></span>
+          <div class="container custom-border custom-bg rounded shadow p-3">
+            <p class="dateDisplay text-center fs-4">
+              Today is <span class="currentDate fw-bold"></span>
             </p>
             <div class="center cluster currentDesc mb-1">
               <img src="" class="currentIMG" alt="..." />
@@ -130,11 +137,13 @@
         </div>
 
         <div class="forecastContainer container p-2">
-          <h2 class="my-3 text-center">Upcoming Conditions</h2>
+          <h3 class="my-3 text-center">5 Day Forecast</h2>
           <div class="forecastDisplay switcher"></div>
         </div>
       </div>
     </main>
+
+    <footer class="p-2 text-center mt-4"><p class="text-center">Background Images provided by <a href="https://www.freepik.com/free-photo/weather-effects-composition_33609898.htm#query=weather%20background%20thunderstorm&position=35&from_view=search&track=ais">Freepik</a></p></footer>
 
     <!-- dayjs -->
     <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>

@@ -27,16 +27,73 @@
   --color-primary: #faf7f0;
   --color-secondary: #cdfcf6;
   --color-accent: #bccef8;
-  --color-highlight: #98a8f8;
+  --color-highlight: #fff;
+}
+
+html {
+  background: url("../images/clouds.png") no-repeat center center fixed;
+  background-size: cover;
 }
 
 body {
-  background-color: #fff;
+  background: transparent;
+  color: #fff;
+  padding-inline: var(--space-l);
+  max-inline-size: 1500px;
+}
+
+.bg-clear {
+  background-image: url("../images/clear.png");
+  background-repeat: repeat-y;
+  background-size: cover;
+}
+.bg-clouds {
+  background-image: url("../images/clouds.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.bg-fog {
+  background-image: url("../images/fog.png");
+  background-repeat: repeat-y;
+  background-size: cover;
+}
+.bg-snow {
+  background-image: url("../images/snow.png");
+  background-repeat: repeat-y;
+  background-size: cover;
+}
+.bg-rain {
+  background-image: url("../images/rain.png");
+  background-repeat: repeat-y;
+  background-size: cover;
+}
+.bg-thunderstorm {
+  background-image: url("../images/thunderstorm.png");
+  background-repeat: repeat-y;
+  background-size: cover;
+}
+
+footer {
+  position: sticky;
+  color: #fff;
 }
 
 h1,
-h2 {
+h2,
+h3 {
   color: var(--color-highlight);
+}
+
+h1 {
+  font-size: var(--step-4);
+}
+
+h2 {
+  font-size: var(--step-3);
+}
+
+h3 {
+  font-size: var(--step-2);
 }
 
 p {
@@ -46,7 +103,6 @@ p {
 .split {
   display: flex;
   flex-wrap: wrap;
-  /* gap: var(--space-m); */
 }
 
 .split > :first-child {
@@ -83,7 +139,6 @@ p {
 .center {
   box-sizing: content-box;
   margin-inline: auto;
-  /* max-inline-size: var(--measure); */
 }
 
 .cluster {
@@ -105,7 +160,7 @@ p {
 }
 
 .stack > * + * {
-  margin-block-start: var(--space, 1.5rem);
+  margin-block-start: var(--space-2xs, 1.5rem);
 }
 
 .mainDisplay {
@@ -138,4 +193,8 @@ img {
 
 .searchHistoryContainer {
   justify-content: flex-start;
+}
+
+.custom-bg {
+  background-color: rgba(200, 200, 200, 0.3);
 }
