@@ -221,7 +221,7 @@ $(".searchHistoryContainer").click(function (e) {
 
 // clears all recent searched from local storage
 $(".clearHistoryBtn").click(function () {
-  localStorage.clear();
+  localStorage.removeItem("searchHistory");
   location.reload();
 });
 
