@@ -163,10 +163,6 @@ p {
   margin-block-start: var(--space-2xs, 1.5rem);
 }
 
-/* .mainDisplay {
-  margin-inline: 2em;
-} */
-
 img {
   max-width: 100%;
   display: block;
